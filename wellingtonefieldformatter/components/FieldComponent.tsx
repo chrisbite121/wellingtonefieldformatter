@@ -28,6 +28,7 @@ export const FieldComponent: React.FC = (props:any) => {
         value={value}
         style={{backgroundColor: props.bgColour, color: props.fColour}}
         onChange={(e:any) => checkValue(e.target.value)}
+        disabled={props.disabled}
       />
     );
   }

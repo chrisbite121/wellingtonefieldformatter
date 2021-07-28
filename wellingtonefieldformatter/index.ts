@@ -47,6 +47,7 @@ export class wellingtonefieldformatter implements ComponentFramework.StandardCon
 			bgColour: bgColour,
 			fColour: fColour,
 			onChange: this.valueChange,
+			disabled: context.mode.isControlDisabled
 		}
 		
 		ReactDOM.render(
