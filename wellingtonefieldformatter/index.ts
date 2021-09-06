@@ -88,7 +88,7 @@ export class wellingtonefieldformatter implements ComponentFramework.StandardCon
 	 */
 	public destroy(): void
 	{
-		// Add code to cleanup control if necessary
+		ReactDOM.unmountComponentAtNode(this._container);
 	}
 
 	private processConfig(context: ComponentFramework.Context<IInputs>)
