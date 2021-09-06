@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="wellingtonefieldformatter" constructor="wellingtonefieldformatter" version="0.0.1" display-name-key="wellingtonefieldformatter" description-key="wellingtonefieldformatter description" control-type="standard" >
+  <control namespace="wellingtonefieldformatter" constructor="wellingtonefieldformatter" version="0.0.2" display-name-key="wellingtonefieldformatter" description-key="wellingtonefieldformatter description" control-type="standard" >
     <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
     If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
     Example1:
@@ -18,15 +18,15 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="fieldValue" display-name-key="field_value" description-key="Value_Of_Field" of-type-group="numbers" usage="bound" required="true" />
+    <property name="fieldValue" display-name-key="field_value" description-key="Value_Of_Field" of-type-group="fieldtypes" usage="bound" required="true" />
     <property name="controlProperties" display-name-key="Control_Properties" description-key="Config for this control" of-type="Multiple" usage="input" required="true" />
-      <type-group name="numbers">
+      <type-group name="fieldtypes">
         <type>Whole.None</type>
         <type>Currency</type>
         <type>FP</type>
         <type>Decimal</type>
+        <type>SingleLine.Text</type>
       </type-group>
-
     <!-- 
       Property node's of-type attribute can be of-type-group attribute. 
       Example:

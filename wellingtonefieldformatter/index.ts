@@ -5,12 +5,12 @@ import { FieldComponent } from './components/FieldComponent'
 
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
 
-
+import { IFieldType } from './model/fieldType';
 
 export class wellingtonefieldformatter implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 	private _config: any;
 	private _container: HTMLDivElement;
-	private _value: number | undefined;
+	private _value: IFieldType;
 	notifyOutputChanged: () => void;
 	/**
 	 * Empty constructor.
@@ -32,22 +32,19 @@ export class wellingtonefieldformatter implements ComponentFramework.StandardCon
 	{
 		this._container = container;
 		this.notifyOutputChanged = notifyOutputChanged;
-		this.renderControl(context);
 	}
 
 	private renderControl(context: ComponentFramework.Context<IInputs>): void
 	{
 		this._config = this.processConfig(context);
-		const value = context.parameters.fieldValue?.raw
-		const bgColour = this.getColour(value, this._config.colourRules).bgColour;
-		const fColour = this.getColour(value, this._config.colourRules).fColour;
+		const value = context.parameters.fieldValue?.raw;
 
 		let props = {
 			value: value,
-			bgColour: bgColour,
-			fColour: fColour,
+			colourRules: this._config.colourRules,
 			onChange: this.valueChange,
-			disabled: context.mode.isControlDisabled
+			disabled: context.mode.isControlDisabled,
+			
 		}
 		
 		ReactDOM.render(
@@ -56,7 +53,7 @@ export class wellingtonefieldformatter implements ComponentFramework.StandardCon
 		);
 	}
 
-	private valueChange = (newValue: number | undefined): void => {
+	private valueChange = (newValue: IFieldType, type: IFieldType): void => {
 		this._value = newValue;
 		this.notifyOutputChanged();
 	};
@@ -102,29 +99,5 @@ export class wellingtonefieldformatter implements ComponentFramework.StandardCon
 		
 	}
 
-	private getColour (value:number | undefined | null, colourRules:Array<any>)
-	{
-		if(value !== null && typeof value !== 'undefined')
-		{
-			for(var i=0; i<colourRules.length; i++)
-			{
-				switch(colourRules[i][0]) {
-					case '<':
-						if (<number>value < colourRules[i][1])
-						return { bgColour: colourRules[i][2], fColour: colourRules[i][3] }
-					break;
-					case '>':
-						if (<number>value > colourRules[i][1])
-						return { bgColour: colourRules[i][2], fColour: colourRules[i][3] }
-					break;
-					case '==':
-						if (<number>value == colourRules[i][1])
-						return { bgColour: colourRules[i][2], fColour: colourRules[i][3] }
-					break;
-				}
-			}
-		}
 
-		return { bgColour: "#ffffff", fColour: "#000000" };
-	}
 }
