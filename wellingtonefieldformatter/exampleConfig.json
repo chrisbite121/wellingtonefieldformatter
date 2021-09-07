@@ -1,8 +1,30 @@
 {
     "colourRules": [
+        ["==","", "#ffffff", "#ffffff"],
         ["<",6, "#057a2c", "#ffffff"],
         ["<",15, "#d6a018", "#ffffff"],
         ["==",17, "#a032a8", "#ffd900"],
         [">",25, "#cf0000", "#ffffff"]
+    ]
+}
+
+
+{
+    "colourRules": [
+        ["==",0, "#d6a018", "#ffffff"],
+        ["==","", "#ffffff", "#000000"],
+        ["<",0, "#cf0000", "#ffffff"],
+        ["<",3, "#d6a018", "#ffffff"],
+        [">",2, "#057a2c", "#ffffff"]
+    ]
+}
+
+
+{
+    "colourRules": [
+        ["==","", "#ffffff", "#000000"],
+        ["==","Green", "#057a2c", "#ffffff"],
+        ["==","Amber", "#d6a018", "#ffffff"],
+        ["==","Red", "#cf0000", "#ffffff"]
     ]
 }

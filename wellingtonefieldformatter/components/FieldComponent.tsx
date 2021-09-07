@@ -11,21 +11,19 @@ export const FieldComponent: React.FC = (props:any) => {
   const [fColour, setFColour] = useState('');
 
   useEffect(() => {
-    if(props.value !== undefined)
+    if(props.value !== undefined) {
       setValue(props.value);
       setBColour(getColour(props.value, props.colourRules).bgColour);
-      setFColour(getColour(props.value, props.colourRules).fColour);      
+      setFColour(getColour(props.value, props.colourRules).fColour);
+    }
+      
 
     if(props.value == undefined)
       setValue('')
-  },[])
+  },[props.value])
 
 
   const fieldChange = (value:any) => {
-    setValue(value);
-    setBColour(getColour(value, props.colourRules).bgColour);
-    setFColour(getColour(value, props.colourRules).fColour);
-
     if(FieldFormatterTimeout) clearTimeout(FieldFormatterTimeout);
 
     FieldFormatterTimeout = setTimeout(() => {
