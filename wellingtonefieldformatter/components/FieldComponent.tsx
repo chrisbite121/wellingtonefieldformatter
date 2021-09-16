@@ -24,6 +24,7 @@ export const FieldComponent: React.FC = (props:any) => {
 
 
   const fieldChange = (value:any) => {
+    setValue(value);
     if(FieldFormatterTimeout) clearTimeout(FieldFormatterTimeout);
 
     FieldFormatterTimeout = setTimeout(() => {
