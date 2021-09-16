@@ -29,7 +29,7 @@ export const FieldComponent: React.FC = (props:any) => {
 
     FieldFormatterTimeout = setTimeout(() => {
       props.onChange(value, props.fType);
-    }, 1000);
+    }, 500);
   }
 
   return (
